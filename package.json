@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@coinbase/onchainkit": "^0.38.5",
+    "next": "^15.3.0-canary.40",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.26"
+    "wagmi": "^2.14.16"
   },
   "devDependencies": {
     "postcss": "^8",
