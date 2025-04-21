@@ -1,19 +1,16 @@
-// wagmi.js
-import { http, createConfig } from 'wagmi';
-import { baseSepolia } from 'wagmi/chains';
+// app/wagmi-config.js
+import { createConfig, http } from 'wagmi';
+import { base } from 'viem/chains';
 import { coinbaseWallet } from 'wagmi/connectors';
 
 export const config = createConfig({
-  chains: [baseSepolia],
+  chains: [base],
   connectors: [
-    coinbaseWallet({ appName: 'Create Wagmi', preference: 'smartWalletOnly' }),
+    coinbaseWallet({
+      appName: 'Your App Name',
+    })
   ],
   transports: {
-    [baseSepolia.id]: http(),
+    [base.id]: http(),
   },
 });
-
-// Export the getConfig function
-export function getConfig() {
-  return config;
-}

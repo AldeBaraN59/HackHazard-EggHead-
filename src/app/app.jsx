@@ -1,15 +1,40 @@
-import './globals.css';
-import { Providers } from './providers'; 
- 
-export default function RootLayout()
-{
+import React from 'react';
+import {
+  AppWithWalletModal,
+  Wallet,
+  ConnectWallet,
+  Avatar,
+  Name,
+  WalletDropdown,
+  Identity,
+  Address,
+  EthBalance,
+  WalletDropdownDisconnect,
+} from '@coinbase/onchainkit'; // Update path if needed
+import { color } from './your-color-config'; // Ensure this exists or remove if not needed
+
+const App = () => {
   return (
-    <html lang="en">
-      <body>
-        <Providers> 
-          {children}
-        </Providers>
-      </body>
-    </html>
+    <AppWithWalletModal>
+      <div className="my-10 flex justify-center">
+        <Wallet>
+          <ConnectWallet>
+            <Avatar className="h-6 w-6" />
+            <Name />
+          </ConnectWallet>
+          <WalletDropdown>
+            <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
+              <Avatar />
+              <Name />
+              <Address className={color.foregroundMuted} />
+              <EthBalance />
+            </Identity>
+            <WalletDropdownDisconnect />
+          </WalletDropdown>
+        </Wallet>
+      </div>
+    </AppWithWalletModal>
   );
-}
+};
+
+export default App;
