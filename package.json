@@ -10,9 +10,18 @@
   },
   "dependencies": {
     "@coinbase/onchainkit": "^0.38.5",
+    "@radix-ui/react-slot": "^1.2.0",
+    "@splinetool/react-spline": "^4.0.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.7.4",
+    "lucide-react": "^0.503.0",
     "next": "^15.3.0-canary.40",
     "react": "^18",
     "react-dom": "^18",
+    "styled-components": "^6.1.17",
+    "tailwind-merge": "^3.2.0",
+    "tailwindcss-animate": "^1.0.7",
     "wagmi": "^2.14.16"
   },
   "devDependencies": {

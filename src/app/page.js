@@ -3,6 +3,10 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Avatar, Identity, Name, Badge, Address } from '@coinbase/onchainkit/identity';
+import HomeNavbar from './HomeNavbar';
+import styled from 'styled-components';
+import Card from '../components/card.jsx';
+import { motion } from 'framer-motion';
 
 // Define a function to fetch identity info or pass in static data
 const address = "0x838aD0EAE54F99F1926dA7C3b6bFbF617389B4D9";
@@ -17,77 +21,72 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        {loading ? (
-          <div>Loading Identity...</div>
-        ) : (
-          <Identity address={address} schemaId={schemaId}>
-            <Avatar />
-            <Name>
-              <Badge />
-            </Name>
-            <Address />
-          </Identity>
-        )}
-        {/* If you still want the other default content, you can uncomment it */}
+    <div className='bg-slate-800'>
+      <div className='sticky top-0 pt-9 z-50 flex justify-center items-center'>
+        <HomeNavbar />
+      </div>
+      <div className='w-screen h-screen bg-slate-800 flex justify-center items-start relative'>
+        <Image
+          src="/headphones-removebg-preview.png"
+          alt="Responsive image"
+          width={300}
+          height={300}
+          className='absolute left-0 bottom-52'
+        />
+
+
+
+        <div className=' h-screen flex flex-col justify-center items-start'>
+          <h1 className=' text-white  text-7xl '>Welcome to Subscribe</h1>
+          <p className=' text-white  text-3xl '>Your one stop platform for supporting your beloved creators</p>
+        </div>
+        
         {/* <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src="/controllerImage-removebg-preview.png"
+          alt="Responsive image"
+          width={300}
+          height={300}
+          className='absolute right-0 top-20'
         /> */}
-      </main>
-      {/* Footer can be kept the same if needed */}
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      </div>
+      <div className='w-screen h-screen bg-slate-800 grid grid-cols-4 gap-20'>
+        <div className=''>
+          <Card />
+        </div>
+        <div className='grid-span'>
+          <Card />
+        </div>
+        <div className='grid-span'>
+          <Card />
+        </div>
+        <div className='grid-span'>
+          <Card />
+        </div>
+        <div className=''>
+          <Card />
+        </div>
+        <div className='grid-span'>
+          <Card />
+        </div>
+        <div className='grid-span'>
+          <Card />
+        </div>
+        <div className='grid-span'>
+          <Card />
+        </div>
+
+      </div >
+      <div className=' h-screen flex justify-center items-start '>
+          <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+          <spline-viewer url="https://prod.spline.design/kY86B9CMWLu99gkE/scene.splinecode"></spline-viewer>
+        </div>
+      //footer
+      <div className='w-screen h-screen bg-slate-800'>
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/A1VkaKD7TMyunAGY/scene.splinecode"></spline-viewer>
+      </div>
     </div>
   );
 }
+
