@@ -1,41 +1,17 @@
 // app/page.jsx
 'use client';
-
-// Correct import paths for latest @coinbase/onchainkit
-import { Wallet } from '@coinbase/onchainkit/wallet';
-import { ConnectWallet } from '@coinbase/onchainkit/wallet';
-import { Avatar, Name } from '@coinbase/onchainkit/identity';
-import { WalletDropdown, WalletDropdownDisconnect } from '@coinbase/onchainkit/wallet';
-import { Identity, Address, EthBalance } from '@coinbase/onchainkit/identity';
-// app/page.jsx (continued)
-import { WagmiProvider } from 'wagmi';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { config } from './wagmi';
-
-const queryClient = new QueryClient();
+import { Wallet, ConnectWallet } from '@coinbase/onchainkit/wallet';
 
 export default function Home() {
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <div className="my-10 flex justify-center">
-          <Wallet>
-            <ConnectWallet>
-              <Avatar className="h-6 w-6" />
-              <Name />
-            </ConnectWallet>
-            <WalletDropdown>
-              <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
-                <Avatar />
-                <Name />
-                <Address className="text-gray-500" />
-                <EthBalance />
-              </Identity>
-              <WalletDropdownDisconnect />
-            </WalletDropdown>
-          </Wallet>
-        </div>
-      </QueryClientProvider>
-    </WagmiProvider>
+    <main className="grid min-h-screen place-items-center bg-gray-50">
+      <Wallet>
+        <ConnectWallet>
+          <button className="rounded-lg bg-blue-600 px-6 py-3 text-lg font-medium text-white shadow-md hover:bg-blue-700 transition-colors">
+            Connect Wallet
+          </button>
+        </ConnectWallet>
+      </Wallet>
+    </main>
   );
 }
