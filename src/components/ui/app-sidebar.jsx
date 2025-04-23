@@ -23,18 +23,13 @@ import {
 const items = [
     {
         title: "Home",
-        url: "#",
+        url: "/home",
         icon: Home,
     },
     {
         title: "Notifications",
-        url: "#",
+        url: "/notifications",
         icon: Inbox,
-    },
-    {
-        title: "Calendar",
-        url: "#",
-        icon: Calendar,
     },
     {
         title: "Become a member",
@@ -50,7 +45,7 @@ const items = [
 const creators = [
     {
         title: "Cgp grey",
-        url: "#",
+        url: "/creator",
         icon: Settings,
 
     },
