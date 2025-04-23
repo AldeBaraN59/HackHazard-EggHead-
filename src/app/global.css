@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Blue outer background for the modal */
+/* Black outer background for the modal */
+/* Blue outer overlay (covers entire screen) */
+[data-testid="ockModalOverlay"] {
+  background: rgba(37, 99, 235, 0.9) !important; /* blue-600 with 90% opacity */
+}
+
+/* White modal container */
+.ock-border-radius.ock-bg-default {
+  background: white !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* White buttons */
+button[class*="ock-bg-alternate"],
+button[class*="ock-bg-default"] {
+  background: white !important;
+  color: black !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+/* Hover states */
+button[class*="ock-bg-alternate"]:hover,
+button[class*="ock-bg-default"]:hover {
+  background: #f3f4f6 !important;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

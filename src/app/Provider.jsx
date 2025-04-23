@@ -1,4 +1,3 @@
-// app/Providers.jsx
 'use client';
 import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { WagmiProvider } from 'wagmi';
@@ -18,8 +17,14 @@ export default function Providers({ children }) {
           config={{
             appearance: {
               name: 'Dapp',
-              logo: '/logo.png', // Update path
-              theme: 'light',
+              logo: '/logo.png',
+              theme: 'dark', // Changed from 'light' to 'dark'
+              colors: { // Optional: Customize dark mode colors
+                primary: '#3B82F6', // Blue accent
+                background: '#1E293B', // Dark slate background
+                text: '#FFFFFF', // White text
+                border: '#334155', // Darker border
+              },
             },
             wallet: {
               display: 'modal',
@@ -38,6 +43,7 @@ export default function Providers({ children }) {
         >
           {children}
         </OnchainKitProvider>
+ 
       </QueryClientProvider>
     </WagmiProvider>
   );

@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google';
 import './global.css';
 import Providers from './Provider';
+import Web3Provider from '../components/Web3Provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -13,9 +14,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
+      <Web3Provider>
         <Providers>
+       
           {children}
+       
         </Providers>
+         </Web3Provider>
+       
+
+        
       </body>
     </html>
   );
