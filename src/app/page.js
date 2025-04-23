@@ -1,58 +1,21 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Wallet, ConnectWallet } from '@coinbase/onchainkit/wallet';
 import HomeNavbar from './HomeNavbar';
 import Card from '../components/card.jsx';
-
-// Lazy load Spline Viewer component (commented out)
-/*
-function LazySpline({ url }) {
-  const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js';
-    script.type = 'module';
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref} className="w-full h-full flex justify-center items-center">
-      {isVisible ? (
-        <spline-viewer url={url}></spline-viewer>
-      ) : (
-        <p className="text-white text-xl">Loading 3D experience...</p>
-      )}
-    </div>
-  );
-}
-*/
+import { motion } from 'framer-motion';
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
   return (
     <div className='bg-slate-800'>
-      {/* Navbar + Wallet Connect */}
+      {/* Navbar with Wallet Connect */}
       <div className='sticky top-0 pt-9 z-50 flex justify-center items-center'>
         <HomeNavbar />
         <div className="absolute right-10">
@@ -67,39 +30,55 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <div className='w-screen h-screen bg-slate-800 flex justify-center items-start relative'>
+      <div className='w-screen h-screen bg-slate-800 flex justify-center items-start relative overflow-hidden'>
         <Image
           src="/headphones-removebg-preview.png"
-          alt="Responsive image"
+          alt="Headphones"
           width={300}
           height={300}
           className='absolute left-0 bottom-52'
+          priority
         />
-        <div className='h-screen flex flex-col justify-center items-start'>
-          <h1 className='text-white text-7xl'>Welcome to Subscribe</h1>
-          <p className='text-white text-3xl'>Your one stop platform for supporting your beloved creators</p>
+
+        <div className='h-screen flex flex-col justify-center items-start px-10'>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className='text-white text-5xl md:text-7xl'
+          >
+            Welcome to Subscribe
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className='text-white text-xl md:text-3xl mt-4'
+          >
+            Your one stop platform for supporting your beloved creators
+          </motion.p>
         </div>
       </div>
 
       {/* Card Grid Section */}
       <div className='w-screen min-h-screen bg-slate-800 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 px-10 py-20'>
         {[...Array(8)].map((_, idx) => (
-          <div key={idx}>
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
+          >
             <Card />
-          </div>
+          </motion.div>
         ))}
       </div>
 
-      {/* Lazy Loaded Spline Viewer Sections (commented out) */}
-      {/*
-      <div className='w-screen h-screen bg-slate-800'>
-        <LazySpline url="https://prod.spline.design/kY86B9CMWLu99gkE/scene.splinecode" />
+      {/* Optional: You can add another section here if needed */}
+      <div className='w-screen h-screen bg-slate-800 flex items-center justify-center'>
+        <h2 className='text-white text-4xl'>Your Content Here</h2>
       </div>
-
-      <div className='w-screen h-screen bg-slate-800'>
-        <LazySpline url="https://prod.spline.design/A1VkaKD7TMyunAGY/scene.splinecode" />
-      </div>
-      */}
     </div>
   );
 }

@@ -1,4 +1,3 @@
-// app/layout.jsx
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Providers from './Provider';
@@ -14,8 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        {/* Passing initialState to the client-side component */}
-        <Providers initialState={initialState}>
+        <Providers>
           {children}
         </Providers>
       </body>
