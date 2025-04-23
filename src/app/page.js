@@ -77,10 +77,7 @@ export default function Home() {
         </div>
 
       </div >
-      <div className=' h-screen flex justify-center items-start '>
-          <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
-          <spline-viewer url="https://prod.spline.design/kY86B9CMWLu99gkE/scene.splinecode"></spline-viewer>
-        </div>
+      
       //footer
       <div className='w-screen h-screen bg-slate-800'>
         <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
