@@ -1,3 +1,5 @@
+'use client'
+import Link from 'next/link'
 import React from 'react'
 
 const HomeNavbar = () => {
@@ -7,7 +9,7 @@ const HomeNavbar = () => {
                     <div className="flex items-center justify-between h-16">
                         <span className="text-2xl text-gray-900 font-semibold">Logo</span>
                         <div className="flex space-x-4 text-gray-900">
-                            <a href="#">Dashboard</a>
+                            <Link href='/home'>Dashboard</Link>
                             <a href="#">About</a>
                             <a href="#">Projects</a>
                             <a href="#">Contact</a>
