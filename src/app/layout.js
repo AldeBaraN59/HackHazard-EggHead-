@@ -22,7 +22,7 @@ export default async function RootLayout({ children }) {
   const initialState = cookieToInitialState(getConfig(), cookies);
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         {/* Passing initialState to the client-side component */}
         <Providers initialState={initialState}>
