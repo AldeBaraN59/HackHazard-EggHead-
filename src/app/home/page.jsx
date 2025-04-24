@@ -46,7 +46,8 @@ const page = () => {
   }, [])
   return (
     <>
-      <div className="bg-slate-700 w-screen h-[10vh] flex justify-center items-center">
+      <div className="bg-slate-700 w-[80vw] h-[10vh] flex justify-between items-center sticky top-0  backdrop-filter backdrop-blur-lg  bg-opacity-30">
+        <img src='/Yellow_Black_Brush_Streetwear_Brand_Logo_20250424_123341_0000-removebg-preview.png' width='200px'/>
         <p className="text-sm text-muted-foreground">
           Press{" "}
           <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
@@ -116,7 +117,7 @@ const page = () => {
           </Link>
         </div>
       </div>
-      <div className="tags grid grid-cols-5 m-32 gap-5">
+      <div className="tags grid grid-cols-5 m-24 gap-5">
         <Tags title='gameing' color='bg-red-600' />
         <Tags title='education' color='bg-blue-600' />
         <Tags title='music' color='bg-green-600' />
@@ -124,6 +125,33 @@ const page = () => {
         <Tags title='cooking' color='bg-green-600' />
         <Tags title='arts' color='bg-purple-600' />
         <Tags title='arts' color='bg-yellow-600' />
+      </div>
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="p-10">Top creators</h1>
+        <div className="grid grid-cols-4">
+          <CreatorCard name="Pewdiepie" image={image3000} supporters="500k+" category="Entertainment" />
+          <CreatorCard name="Filthy Frank" image={image3000} supporters="300k+" category="Comedy" />
+          <CreatorCard name="Marques Brownlee" image={image3000} supporters="300k+" category="Tech" />
+          <CreatorCard name="IShowSpeed" image={image3000} supporters="500k+" category="Streaming, Entertainment" />
+        </div>
+      </div>
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="p-10">Top creators</h1>
+        <div className="grid grid-cols-4">
+          <CreatorCard name="Pewdiepie" image={image3000} supporters="500k+" category="Entertainment" />
+          <CreatorCard name="Filthy Frank" image={image3000} supporters="300k+" category="Comedy" />
+          <CreatorCard name="Marques Brownlee" image={image3000} supporters="300k+" category="Tech" />
+          <CreatorCard name="IShowSpeed" image={image3000} supporters="500k+" category="Streaming, Entertainment" />
+        </div>
+      </div>
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="p-10">Top creators</h1>
+        <div className="grid grid-cols-4">
+          <CreatorCard name="Pewdiepie" image={image3000} supporters="500k+" category="Entertainment" />
+          <CreatorCard name="Filthy Frank" image={image3000} supporters="300k+" category="Comedy" />
+          <CreatorCard name="Marques Brownlee" image={image3000} supporters="300k+" category="Tech" />
+          <CreatorCard name="IShowSpeed" image={image3000} supporters="500k+" category="Streaming, Entertainment" />
+        </div>
       </div>
       <div className="flex flex-col justify-center items-center">
         <h1 className="p-10">Top creators</h1>

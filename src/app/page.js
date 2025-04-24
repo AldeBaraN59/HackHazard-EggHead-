@@ -1,89 +1,85 @@
-
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Avatar, Identity, Name, Badge, Address } from '@coinbase/onchainkit/identity';
 import HomeNavbar from './HomeNavbar';
-import styled from 'styled-components';
 import Card from '../components/card.jsx';
 import { motion } from 'framer-motion';
-
-// Define a function to fetch identity info or pass in static data
-const address = "0x838aD0EAE54F99F1926dA7C3b6bFbF617389B4D9";
-const schemaId = "0xf8b05c79f090979bf4a80270aba232dff11a10d9ca55c4f88de95317970f0de9";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate some delay for loading
     setLoading(false);
   }, []);
 
   return (
-    <div className='bg-slate-800'>
-      <div className='sticky top-0 pt-9 z-50 flex justify-center items-center'>
+    <div className="bg-slate-900 text-white w-screen flex flex-col justify-center items-center">
+      {/* Navbar */}
+      <header className="sticky top-0 z-50">
         <HomeNavbar />
-      </div>
-      <div className='w-screen h-screen bg-slate-800 flex justify-center items-start relative'>
-        <Image
-          src="/headphones-removebg-preview.png"
-          alt="Responsive image"
-          width={300}
-          height={300}
-          className='absolute left-0 bottom-52'
-        />
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative flex flex-col lg:flex-row items-center justify-between h-screen px-8 lg:px-20 overflow-hidden gap-10">
+  {/* Hero Text */}
+  <motion.div
+    initial={{ y: 50, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ duration: 1 }}
+    className="z-10 text-center lg:text-left max-w-2xl space-y-6"
+  >
+    <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+      Welcome to <span className="text-teal-400">Subscribe</span>
+    </h1>
+    <p className="text-xl md:text-2xl text-gray-300">
+      Your one-stop platform to support your favorite creators.
+    </p>
+  </motion.div>
+
+  {/* Headphone Image in row */}
+  <motion.div
+    initial={{ x: 100, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    transition={{ duration: 1 }}
+    className="hidden lg:block"
+  >
+    <Image
+      src="/headphones-removebg-preview.png"
+      alt="Headphones"
+      width={300}
+      height={300}
+    />
+  </motion.div>
+</section>
 
 
+      {/* Card Section */}
+      <section className="py-16 px-6 lg:px-20 bg-slate-900">
+        <h2 className="text-3xl font-semibold mb-10">Top Creators</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {[...Array(8)].map((_, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+            >
+              <Card />
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-        <div className=' h-screen flex flex-col justify-center items-start'>
-          <h1 className=' text-white  text-7xl '>Welcome to Subscribe</h1>
-          <p className=' text-white  text-3xl '>Your one stop platform for supporting your beloved creators</p>
-        </div>
-        
-        {/* <Image
-          src="/controllerImage-removebg-preview.png"
-          alt="Responsive image"
-          width={300}
-          height={300}
-          className='absolute right-0 top-20'
-        /> */}
-
-      </div>
-      <div className='w-screen h-screen bg-slate-800 grid grid-cols-4 gap-20'>
-        <div className=''>
-          <Card />
-        </div>
-        <div className='grid-span'>
-          <Card />
-        </div>
-        <div className='grid-span'>
-          <Card />
-        </div>
-        <div className='grid-span'>
-          <Card />
-        </div>
-        <div className=''>
-          <Card />
-        </div>
-        <div className='grid-span'>
-          <Card />
-        </div>
-        <div className='grid-span'>
-          <Card />
-        </div>
-        <div className='grid-span'>
-          <Card />
-        </div>
-
-      </div >
-      
-      //footer
-      <div className='w-screen h-screen bg-slate-800'>
+      {/* Footer / Spline Viewer Section */}
+      <footer className="relative w-full h-screen bg-slate-800">
         <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
-        <spline-viewer url="https://prod.spline.design/A1VkaKD7TMyunAGY/scene.splinecode"></spline-viewer>
-      </div>
+        <spline-viewer
+          url="https://prod.spline.design/A1VkaKD7TMyunAGY/scene.splinecode"
+          className="absolute inset-0 w-full h-full"
+        ></spline-viewer>
+        <div className="absolute bottom-0 w-full text-center pb-4 text-gray-400 text-sm">
+          © {new Date().getFullYear()} Subscribe. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 }
-

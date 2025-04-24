@@ -14,7 +14,6 @@ export default function Layout({ children }) {
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <SidebarTrigger />
                     <ModeToggle/>
                     {children}
                 </ThemeProvider>

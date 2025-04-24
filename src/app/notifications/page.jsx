@@ -5,7 +5,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='flex flex-col justify-center items-center bg-slate-800 text-white w-screen h-screen'>
+    <div className='flex flex-col justify-center items-center bg-slate-800 text-white w-[80vw] h-screen'>
       <Bell/>
       <h1>No notifications yet</h1>
       <h4>
