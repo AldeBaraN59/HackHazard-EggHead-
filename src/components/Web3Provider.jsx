@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { ethers } from 'ethers';
-import { getEthereumProvider } from '../utils/web3';
-import { SUPPORTED_CHAINS } from '../utils/constants';
+import { getEthereumProvider } from '../../utils/web3';
+import { SUPPORTED_CHAINS } from '../../utils/constants';
 
 const Web3Context = createContext();
 

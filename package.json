@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^4.9.5",
     "hardhat": "^2.23.0",
     "pino-pretty": "^13.0.0",
     "postcss": "^8",

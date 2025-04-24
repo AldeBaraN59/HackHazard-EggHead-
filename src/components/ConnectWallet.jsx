@@ -1,5 +1,5 @@
 import { useWeb3 } from './Web3Provider';
-import { shortenAddress } from '../utils/web3';
+import { shortenAddress } from '../../utils/web3';
 
 export default function ConnectWallet() {
   const { account, isConnected, isConnecting, error, connectWallet, disconnectWallet } = useWeb3();

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { shortenAddress } from '../utils/web3';
+import { shortenAddress } from '../../utils/web3';
 
 export default function CreatorCard({ creator }) {
   const { id, wallet, metadataURI, totalSubscribers, isVerified } = creator;

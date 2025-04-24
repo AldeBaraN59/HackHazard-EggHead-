@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useWeb3 } from '../../components/Web3Provider';
-import { getCreatorRegistryContract } from '../../utils/web3';
+import { getCreatorRegistryContract } from '../../../utils/web3';
 import CreatorCard from '../../components/CreatorCard';
 
 export default function CreatorsPage() {
