@@ -32,7 +32,7 @@ const items = [
         icon: Inbox,
     },
     {
-        title: "Become a member",
+        title: "Become a creator",
         url: "#",
         icon: Gamepad,
     },
