@@ -47,7 +47,7 @@ const page = () => {
   return (
     <>
       <div className="bg-slate-700 w-[80vw] h-[10vh] flex justify-between items-center sticky top-0  backdrop-filter backdrop-blur-lg  bg-opacity-30">
-        <img src='/Yellow_Black_Brush_Streetwear_Brand_Logo_20250424_123341_0000-removebg-preview.png' width='200px'/>
+        <img src='/Yellow_Black_Brush_Streetwear_Brand_Logo_20250424_123341_0000-removebg-preview.png' width='200px' />
         <p className="text-sm text-muted-foreground">
           Press{" "}
           <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
@@ -83,12 +83,16 @@ const page = () => {
               </CommandItem>
               <CommandItem>
                 <Mail />
-                <span>Notification</span>
+                <Link href="/notification">
+                  <span>Notification</span>
+                </Link>
                 <CommandShortcut>⌘N</CommandShortcut>
               </CommandItem>
               <CommandItem>
                 <Gamepad />
+                <Link href="/notification">
                 <span>Become a creator</span>
+                </Link>
                 <CommandShortcut>⌘C</CommandShortcut>
               </CommandItem>
               <CommandItem>
