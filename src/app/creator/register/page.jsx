@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useWeb3 } from '../../../components/Web3Provider';
-import { getCreatorRegistryContract, uploadToIPFS, registerCreator } from '../../../../utils/web3';
+import { getCreatorRegistryContract, uploadToIPFS } from '../../../utils/web3';
 
 export default function CreatorRegistrationPage() {
   const router = useRouter();
@@ -45,67 +45,45 @@ export default function CreatorRegistrationPage() {
     setFormData(prev => ({ ...prev, profileImage: e.target.files[0] }));
   };
 
-  // src/app/creator/register/page.jsx
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    if (!isConnected || !signer) {
+    
+    if (!isConnected) {
       alert('Please connect your wallet first');
       return;
     }
-  
+    
     try {
       setIsSubmitting(true);
       setError(null);
-  
-      // 1. Validate form data
-      if (!formData.name.trim()) {
-        throw new Error('Name is required');
-      }
-  
-      // 2. Prepare metadata
+      
+      // In a real app, you'd upload the image to IPFS first
+      // For this example, we'll create a metadata object
       const metadata = {
-        name: formData.name.trim(),
-        description: formData.bio.trim(),
-        image: 'ipfs://placeholder', // Replace with actual IPFS hash
+        name: formData.name,
+        description: formData.bio,
+        image: 'ipfs://QmPlaceholderHash', // Placeholder for the image hash
         socialLinks: formData.socialLinks
       };
       
-      const metadataURI = JSON.stringify(metadata);
-  
-      // 3. Get contract with validation
-      const contract = getCreatorRegistryContract(signer);
+      // Upload metadata to IPFS (simulated)
+      const metadataURI = await uploadToIPFS(metadata);
       
-      // 4. Debug log contract info
-      console.log('Contract address:', contract.target);
-      console.log('Signer address:', await signer.getAddress());
+      // Register creator on-chain
+      const creatorRegistry = getCreatorRegistryContract(signer);
+      const tx = await creatorRegistry.registerCreator(metadataURI);
+      await tx.wait();
       
-      // 5. Call contract with proper error handling
-      const tx = await contract.registerCreator(metadataURI, {
-        gasLimit: 500000
-      });
-      
-      console.log('Transaction sent:', tx.hash);
-      
-      const receipt = await tx.wait();
-      console.log('Transaction mined:', receipt.status);
-      
-      if (receipt.status !== 1) {
-        throw new Error('Transaction failed');
-      }
-  
+      // Redirect to creator profile
       router.push('/dashboard');
     } catch (err) {
       console.error('Registration error:', err);
-      setError(
-        err.reason?.replace('execution reverted: ', '') || 
-        err.message || 
-        'Registration failed. Please check your connection and try again.'
-      );
+      setError(err.message);
     } finally {
       setIsSubmitting(false);
     }
   };
+
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-2xl mx-auto">

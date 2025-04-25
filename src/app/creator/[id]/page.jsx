@@ -1,17 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { use } from 'react';
 import { useWeb3 } from '../../../components/Web3Provider';
 import { 
   getCreatorRegistryContract,
   getContentNFTContract,
   shortenAddress 
-} from '../../../../utils/web3';
+} from '../../../utils/web3';
 import SubscriptionTier from '../../../components/SubscriptionTier';
 
 export default function CreatorProfilePage({ params }) {
-  const { id: creatorId } = use(params);
+  const creatorId = params.id;
   const [creator, setCreator] = useState(null);
   const [tiers, setTiers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

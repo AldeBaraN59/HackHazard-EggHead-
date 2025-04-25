@@ -1,17 +1,4 @@
 export const CREATOR_REGISTRY_ABI = [
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "metadataURI",
-        "type": "string"
-      }
-    ],
-    "name": "registerCreator",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
     "function registerCreator(string memory metadataURI) external nonReentrant",
     "function updateCreator(string memory metadataURI) external onlyCreator",
     "function getCreator(uint256 creatorId) external view returns (tuple(uint256 id,address payable wallet,string metadataURI,uint256 totalSubscribers,uint256 totalEarnings,bool isVerified,uint256 createdAt,uint256 updatedAt))",

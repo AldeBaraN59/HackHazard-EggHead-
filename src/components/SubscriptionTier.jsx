@@ -5,7 +5,7 @@ import {
   getSubscriptionManagerContract, 
   parseEther, 
   formatEther 
-} from '../../utils/web3';
+} from '../utils/web3';
 
 export default function SubscriptionTier({ tier, creatorId }) {
   const { id, name, metadataURI, price, createdAt } = tier;
