@@ -1,94 +1,53 @@
-import { ethers } from 'ethers';
-import { CONTRACT_ADDRESSES, CREATOR_REGISTRY_ABI, CONTENT_NFT_ABI, SUBSCRIPTION_MANAGER_ABI } from './constants';
+import { ethers } from 'ethers'
 
-export const getEthereumProvider = () => {
-  if (typeof window !== 'undefined' && window.ethereum) {
-    return new ethers.BrowserProvider(window.ethereum); // Changed from Web3Provider to BrowserProvider
-  }
-  return null;
-};
+const CREATOR_REGISTRY_ABI = [
+  'function registerCreator(string memory metadataURI) external returns (uint256)',
+  'function getCreator(uint256 creatorId) external view returns (tuple(uint256 id, address wallet, string metadataURI, uint256 totalSubscribers, uint256 totalEarnings, bool isVerified, uint256 createdAt, uint256 updatedAt))',
+  'function getCreatorIdByWallet(address wallet) external view returns (uint256)',
+  'function getCreatorCount() external view returns (uint256)'
+]
 
-// utils/web3.js
-// utils/web3.js
-export const getCreatorRegistryContract = (signer) => {
-  if (!signer) {
-    throw new Error('Signer is required');
-  }
+const SUBSCRIPTION_MANAGER_ABI = [
+  'function subscribe(uint256 creatorId, uint256 tierId, uint256 months) external payable returns (uint256)',
+  'function cancelSubscription(uint256 subscriptionId) external',
+  'function getSubscription(uint256 subscriptionId) external view returns (tuple(uint256 id, uint256 creatorId, uint256 tierId, address subscriber, uint256 startTime, uint256 endTime, uint256 amountPaid, bool isActive, uint256 createdAt))',
+  'function getSubscriptionsBySubscriber(address subscriber) external view returns (uint256[])',
+  'function getSubscriptionsByCreator(uint256 creatorId) external view returns (uint256[])'
+]
 
-  if (!CONTRACT_ADDRESSES.creatorRegistry) {
-    throw new Error('Creator Registry contract address not configured');
-  }
+const CONTENT_NFT_ABI = [
+  'function createTier(uint256 creatorId, string memory name, string memory metadataURI, uint256 price) external returns (uint256)',
+  'function mintContent(uint256 tierId, string memory contentURI) external returns (uint256)',
+  'function hasAccess(uint256 tokenId, uint256 tierId) external view returns (bool)',
+  'function getTokenTier(uint256 tokenId) external view returns (uint256)',
+  'function getContentURI(uint256 tokenId) external view returns (string memory)',
+  'function getTierCount(uint256 creatorId) external view returns (uint256)',
+  'function getTier(uint256 creatorId, uint256 tierId) external view returns (tuple(uint256 id, string name, string metadataURI, uint256 price, uint256 createdAt))',
+  'function getContentCount(uint256 creatorId) external view returns (uint256)',
+  'function getContent(uint256 creatorId, uint256 contentId) external view returns (tuple(uint256 id, string contentURI, string metadataURI, uint256 tierId, uint256 timestamp))',
+  'function getTierSubscriberCount(uint256 creatorId, uint256 tierId) external view returns (uint256)'
+]
 
-  // Validate the contract address format
-  if (!ethers.isAddress(CONTRACT_ADDRESSES.creatorRegistry)) {
-    throw new Error('Invalid contract address format');
-  }
-
-  try {
-    return new ethers.Contract(
-      CONTRACT_ADDRESSES.creatorRegistry,
-      CREATOR_REGISTRY_ABI,
-      signer
-    );
-  } catch (err) {
-    throw new Error(`Contract initialization failed: ${err.message}`);
-  }
-};
-export const registerCreator = async (contract, metadataURI) => {
-  if (!contract.registerCreator) {
-    throw new Error('registerCreator function not found in contract');
-  }
-
-  const tx = await contract.registerCreator(metadataURI, {
-    gasLimit: 500000
-  });
-  
-  return tx.wait();
-};
-
-export const getContentNFTContract = (providerOrSigner) => {
+export function getCreatorRegistryContract(signer) {
   return new ethers.Contract(
-    CONTRACT_ADDRESSES.contentNFT,
-    CONTENT_NFT_ABI,
-    providerOrSigner
-  );
-};
-export const validateContractAddress = (address) => {
-  return ethers.isAddress(address);
-};
-export const validateMetadataURI = (uri) => {
-  try {
-    const parsed = JSON.parse(uri);
-    return typeof parsed === 'object' && parsed !== null;
-  } catch {
-    return false;
-  }
-};
+    process.env.NEXT_PUBLIC_CREATOR_REGISTRY_ADDRESS,
+    CREATOR_REGISTRY_ABI,
+    signer
+  )
+}
 
-export const getSubscriptionManagerContract = (providerOrSigner) => {
+export function getSubscriptionManagerContract(signer) {
   return new ethers.Contract(
-    CONTRACT_ADDRESSES.subscriptionManager,
+    process.env.NEXT_PUBLIC_SUBSCRIPTION_MANAGER_ADDRESS,
     SUBSCRIPTION_MANAGER_ABI,
-    providerOrSigner
-  );
-};
+    signer
+  )
+}
 
-
-export const formatEther = (wei) => {
-  return ethers.formatEther(wei); // Updated to ethers v6 format
-};
-
-export const parseEther = (ether) => {
-  return ethers.parseEther(ether); // Updated to ethers v6 format
-};
-
-export const shortenAddress = (address) => {
-  return `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
-};
-
-export const uploadToIPFS = async (data) => {
-  // In a real application, you would implement IPFS upload
-  // This is a placeholder
-  console.log('Uploading to IPFS:', data);
-  return `ipfs://QmExample${Math.floor(Math.random() * 1000000)}`;
-};
+export function getContentNFTContract(signer) {
+  return new ethers.Contract(
+    process.env.NEXT_PUBLIC_CONTENT_NFT_ADDRESS,
+    CONTENT_NFT_ABI,
+    signer
+  )
+} 
