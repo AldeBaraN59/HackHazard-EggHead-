@@ -4,10 +4,18 @@ import { WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { config } from './wagmi';
 import { base } from 'viem/chains';
-
-const queryClient = new QueryClient();
+import { useEffect, useState } from 'react';
 
 export default function Providers({ children }) {
+  const [queryClient] = useState(() => new QueryClient());
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
@@ -18,12 +26,12 @@ export default function Providers({ children }) {
             appearance: {
               name: 'Dapp',
               logo: '/logo.png',
-              theme: 'dark', // Changed from 'light' to 'dark'
-              colors: { // Optional: Customize dark mode colors
-                primary: '#3B82F6', // Blue accent
-                background: '#1E293B', // Dark slate background
-                text: '#FFFFFF', // White text
-                border: '#334155', // Darker border
+              theme: 'dark',
+              colors: {
+                primary: '#3B82F6',
+                background: '#1E293B',
+                text: '#FFFFFF',
+                border: '#334155',
               },
             },
             wallet: {
@@ -43,7 +51,6 @@ export default function Providers({ children }) {
         >
           {children}
         </OnchainKitProvider>
- 
       </QueryClientProvider>
     </WagmiProvider>
   );

@@ -100,6 +100,7 @@ button[class*="ock-bg-default"]:hover {
     --sidebar-ring: 217.2 91.2% 59.8%}
 }
 
+
 @layer base {
   * {
     @apply border-border;

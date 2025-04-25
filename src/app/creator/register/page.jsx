@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useWeb3 } from '../../../components/Web3Provider';
-import { getCreatorRegistryContract, uploadToIPFS } from '../../../../utils/web3';
+import { getCreatorRegistryContract, uploadToIPFS, registerCreator } from '../../../../utils/web3';
 
 export default function CreatorRegistrationPage() {
   const router = useRouter();
@@ -45,6 +45,7 @@ export default function CreatorRegistrationPage() {
     setFormData(prev => ({ ...prev, profileImage: e.target.files[0] }));
   };
 
+  // src/app/creator/register/page.jsx
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -62,37 +63,33 @@ export default function CreatorRegistrationPage() {
         throw new Error('Name is required');
       }
   
-      // 2. Prepare and validate metadata
+      // 2. Prepare metadata
       const metadata = {
         name: formData.name.trim(),
         description: formData.bio.trim(),
-        image: 'ipfs://QmPlaceholderHash',
+        image: 'ipfs://placeholder', // Replace with actual IPFS hash
         socialLinks: formData.socialLinks
       };
       
       const metadataURI = JSON.stringify(metadata);
-      if (!metadataURI.startsWith('{')) {
-        throw new Error('Invalid metadata format');
-      }
   
-      // 3. Get contract with enhanced validation
-      const creatorRegistry = getCreatorRegistryContract(signer);
+      // 3. Get contract with validation
+      const contract = getCreatorRegistryContract(signer);
       
-      // Debug logs
+      // 4. Debug log contract info
+      console.log('Contract address:', contract.target);
       console.log('Signer address:', await signer.getAddress());
-      console.log('Contract address:', creatorRegistry.address);
-      console.log('Contract methods:', Object.keys(creatorRegistry.functions));
       
-      if (!creatorRegistry.registerCreator) {
-        throw new Error('registerCreator function not found in contract');
-      }
-  
-      // 4. Call with proper error handling
-      const tx = await creatorRegistry.registerCreator(metadataURI, {
+      // 5. Call contract with proper error handling
+      const tx = await contract.registerCreator(metadataURI, {
         gasLimit: 500000
       });
       
+      console.log('Transaction sent:', tx.hash);
+      
       const receipt = await tx.wait();
+      console.log('Transaction mined:', receipt.status);
+      
       if (receipt.status !== 1) {
         throw new Error('Transaction failed');
       }
@@ -109,7 +106,6 @@ export default function CreatorRegistrationPage() {
       setIsSubmitting(false);
     }
   };
-
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-2xl mx-auto">

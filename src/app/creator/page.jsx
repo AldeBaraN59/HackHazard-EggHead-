@@ -4,11 +4,14 @@ import { useWeb3 } from '../../components/Web3Provider';
 import { getCreatorRegistryContract } from '../../../utils/web3';
 import CreatorCard from '../../components/CreatorCard';
 import { ethers } from 'ethers'; // Import ethers for address validation
+import { useRouter } from 'next/navigation';;
+
 
 export default function CreatorsPage() {
   const [creators, setCreators] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { provider, isConnected } = useWeb3();
+  const router = useRouter(); 
 
   useEffect(() => {
     const fetchCreators = async () => {
@@ -24,25 +27,24 @@ export default function CreatorsPage() {
         const creatorList = [];
         for (let i = 1; i <= totalCreators; i++) {
           const creator = await creatorRegistry.getCreator(i);
-          
-          // Validate Ethereum address
-          if (!ethers.utils.isAddress(creator.wallet)) {
-            console.error(`Invalid wallet address for creator ID ${i}: ${creator.wallet}`);
-            continue; // Skip invalid creators
+        
+          // Check if creator is undefined or missing expected fields
+          if (!creator || !creator.wallet || !ethers.isAddress(creator.wallet)) {
+            console.warn(`Skipping invalid creator at index ${i}:`, creator);
+            continue;
           }
-
+        
           creatorList.push({
-            id: creator.id.toString(),
+            id: creator.id?.toString() ?? i.toString(), // fallback
             wallet: creator.wallet,
             metadataURI: creator.metadataURI,
-            totalSubscribers: creator.totalSubscribers.toString(),
-            totalEarnings: creator.totalEarnings.toString(),
-            isVerified: creator.isVerified,
-            createdAt: creator.createdAt.toString(),
-            updatedAt: creator.updatedAt.toString()
+            totalSubscribers: creator.totalSubscribers?.toString() ?? '0',
+            totalEarnings: creator.totalEarnings?.toString() ?? '0',
+            isVerified: creator.isVerified ?? false,
+            createdAt: creator.createdAt?.toString() ?? '',
+            updatedAt: creator.updatedAt?.toString() ?? '',
           });
         }
-        
         setCreators(creatorList);
       } catch (error) {
         console.error('Error fetching creators:', error);
@@ -72,9 +74,19 @@ export default function CreatorsPage() {
         </div>
       ) : (
         <div className="text-center py-8">
-          No creators found. Be the first to register!
+        
+       No creators found. Be the first one to register!
         </div>
+        
       )}
+     <div className="absolute top-4 right-4">
+        <button
+          onClick={() => router.push('/creator/register')}
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+        >
+          Become a Creator
+        </button>
+      </div>
     </div>
   );
 }

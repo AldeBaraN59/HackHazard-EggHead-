@@ -9,6 +9,7 @@ export const getEthereumProvider = () => {
 };
 
 // utils/web3.js
+// utils/web3.js
 export const getCreatorRegistryContract = (signer) => {
   if (!signer) {
     throw new Error('Signer is required');
@@ -18,26 +19,31 @@ export const getCreatorRegistryContract = (signer) => {
     throw new Error('Creator Registry contract address not configured');
   }
 
+  // Validate the contract address format
   if (!ethers.isAddress(CONTRACT_ADDRESSES.creatorRegistry)) {
-    throw new Error('Invalid contract address');
+    throw new Error('Invalid contract address format');
   }
 
   try {
-    const contract = new ethers.Contract(
+    return new ethers.Contract(
       CONTRACT_ADDRESSES.creatorRegistry,
       CREATOR_REGISTRY_ABI,
       signer
     );
-    
-    // Verify contract is connected
-    if (!contract.registerCreator) {
-      throw new Error('Contract ABI mismatch - registerCreator not found');
-    }
-    
-    return contract;
   } catch (err) {
     throw new Error(`Contract initialization failed: ${err.message}`);
   }
+};
+export const registerCreator = async (contract, metadataURI) => {
+  if (!contract.registerCreator) {
+    throw new Error('registerCreator function not found in contract');
+  }
+
+  const tx = await contract.registerCreator(metadataURI, {
+    gasLimit: 500000
+  });
+  
+  return tx.wait();
 };
 
 export const getContentNFTContract = (providerOrSigner) => {
@@ -66,6 +72,7 @@ export const getSubscriptionManagerContract = (providerOrSigner) => {
     providerOrSigner
   );
 };
+
 
 export const formatEther = (wei) => {
   return ethers.formatEther(wei); // Updated to ethers v6 format

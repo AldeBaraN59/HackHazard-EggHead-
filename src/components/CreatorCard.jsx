@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { shortenAddress } from '../../utils/web3';
 
 export default function CreatorCard({ creator }) {
+  if (!creator) return null;
   const { id, wallet, metadataURI, totalSubscribers, isVerified } = creator;
   
   // In a real app, you would fetch and parse the metadata from IPFS
