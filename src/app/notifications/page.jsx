@@ -1,5 +1,6 @@
 'use client'
 
+import ExpandableCardDemo from '@/components/expandable-card-demo-standard'
 import { Bell } from 'lucide-react'
 import React from 'react'
 
@@ -12,6 +13,7 @@ const page = () => {
       You’ll get updates when people join your community, 
       interact with your posts and more.
       </h4>
+      <ExpandableCardDemo/>
     </div>
   )
 }
