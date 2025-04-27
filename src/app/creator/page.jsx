@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useWeb3 } from '../../components/Web3Provider';
+import { useWeb3 } from '../../hooks/useWeb3';
 import { getCreatorRegistryContract } from '../../../utils/web3';
 import CreatorCard from '../../components/CreatorCard';
 

@@ -4,7 +4,7 @@ const CREATOR_REGISTRY_ABI = [
   'function registerCreator(string memory metadataURI) external returns (uint256)',
   'function getCreator(uint256 creatorId) external view returns (tuple(uint256 id, address wallet, string metadataURI, uint256 totalSubscribers, uint256 totalEarnings, bool isVerified, uint256 createdAt, uint256 updatedAt))',
   'function getCreatorIdByWallet(address wallet) external view returns (uint256)',
-  'function getCreatorCount() external view returns (uint256)'
+  'function getTotalCreators() external view returns (uint256)'
 ]
 
 const SUBSCRIPTION_MANAGER_ABI = [
@@ -29,9 +29,6 @@ const CONTENT_NFT_ABI = [
 ]
 
 export function getCreatorRegistryContract(signer) {
-  if (!process.env.NEXT_PUBLIC_CREATOR_REGISTRY_ADDRESS) {
-    throw new Error("Creator Registry address not configured")
-  }
   return new ethers.Contract(
     process.env.NEXT_PUBLIC_CREATOR_REGISTRY_ADDRESS,
     CREATOR_REGISTRY_ABI,

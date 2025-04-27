@@ -1,5 +1,5 @@
 export const CREATOR_REGISTRY_ABI = [
-   "function registerCreator(string memory metadataURI) external nonReentrant",
+    "function registerCreator(string memory metadataURI) external nonReentrant",
     "function updateCreator(string memory metadataURI) external onlyCreator",
     "function getCreator(uint256 creatorId) external view returns (tuple(uint256 id,address payable wallet,string metadataURI,uint256 totalSubscribers,uint256 totalEarnings,bool isVerified,uint256 createdAt,uint256 updatedAt))",
     "function getCreatorIdByWallet(address wallet) external view returns (uint256)",
@@ -26,10 +26,9 @@ export const CREATOR_REGISTRY_ABI = [
   
   // Replace these with your deployed contract addresses
   export const CONTRACT_ADDRESSES = {
-    creatorRegistry: 
-"0xA9b02320a890ef9AF8A0abA9147CCe5844496be7",
-    contentNFT: "0x...",
-    subscriptionManager: "0x..."
+    creatorRegistry: "0x2224047942Ab260A5FF3908f1eCB9D9122B474dF",
+    contentNFT: "0x268F03095d094Dc0c117B02e8f0177E189dC293e",
+    subscriptionManager: "0xB2AEb95CfcCb3bc1Ae6CE3B58D79CeDE9ceb4ae9"
   };
   
   export const SUPPORTED_CHAINS = [1, 5, 11155111]; // Ethereum Mainnet, Goerli, Sepolia

@@ -192,7 +192,7 @@ const Page = () => {
           </kbd>
         </p>
         <div className="top-4 right-4">
-          <Link href='/creator/register'>
+          <Link href='/register'>
             <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
               Become a Creator
             </button>

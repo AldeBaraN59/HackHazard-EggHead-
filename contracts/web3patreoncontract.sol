@@ -8,7 +8,6 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 
-
 /**
  * @title CreatorRegistry
  * @dev Manages creator profiles and their metadata

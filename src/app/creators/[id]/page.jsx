@@ -1,5 +1,6 @@
 'use client'
 
+import React from "react";
 import { useEffect, useState } from 'react'
 import { useWeb3 } from '../../../hooks/useWeb3'
 import CreatorProfile from '../../../components/CreatorProfile'
@@ -10,6 +11,7 @@ export default function CreatorProfilePage({ params }) {
   const [creator, setCreator] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const { id } = React.use(params);
 
   useEffect(() => {
     async function fetchCreator() {
@@ -19,7 +21,13 @@ export default function CreatorProfilePage({ params }) {
           return
         }
 
-        const creatorId = params.id
+        const creatorId = Number(id);
+        if (isNaN(creatorId)) {
+          setError('Invalid creator ID');
+          setLoading(false);
+          return;
+        }
+
         const creatorData = await contracts.creatorRegistry.getCreator(creatorId)
         const metadata = await fetch(creatorData.metadataURI).then(res => res.json())
 
@@ -76,7 +84,7 @@ export default function CreatorProfilePage({ params }) {
     }
 
     fetchCreator()
-  }, [contracts, isConnected, params.id])
+  }, [contracts, isConnected, id])
 
   if (loading) {
     return (

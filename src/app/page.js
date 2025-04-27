@@ -51,7 +51,7 @@ export default function Home() {
 
     if (isWalletConnected) {
       console.log('[10] Redirecting to /creator/register');
-      router.push('');
+      router.push('/home');
     }
   }, [isWalletConnected, router]);
 

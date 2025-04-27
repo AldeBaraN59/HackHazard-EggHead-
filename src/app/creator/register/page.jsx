@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-
-import useWeb3 from '@/hooks/useWeb3';
+import { useWeb3 } from '../../../components/Web3Provider';
 import { getCreatorRegistryContract, uploadToIPFS } from '../../../utils/web3';
 
 export default function CreatorRegistrationPage() {

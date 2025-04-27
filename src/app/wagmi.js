@@ -1,17 +1,19 @@
-// app/wagmi-config.js
-import { createConfig, http } from 'wagmi';
-import { base } from 'viem/chains';
-import { coinbaseWallet, injected } from 'wagmi/connectors';
+// wagmi.js
+import { http, createConfig } from 'wagmi';
+import { baseSepolia } from 'wagmi/chains';
+import { coinbaseWallet } from 'wagmi/connectors';
 
 export const config = createConfig({
-  chains: [base],
+  chains: [baseSepolia],
   connectors: [
-    coinbaseWallet({
-      appName: 'Your App Name',
-    }),
-    injected({ target: 'metaMask' }) // Explicitly add MetaMask
+    coinbaseWallet({ appName: 'Create Wagmi', preference: 'smartWalletOnly' }),
   ],
   transports: {
-    [base.id]: http(),
+    [baseSepolia.id]: http(),
   },
 });
+
+// Export the getConfig function
+export function getConfig() {
+  return config;
+}

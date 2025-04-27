@@ -1,3 +1,4 @@
+"use client";
 import { useWeb3 } from '@/hooks/useWeb3'
 import { useState, useEffect } from 'react'
 

@@ -1,12 +1,12 @@
-// src/hooks/useWeb3.js
+'use client'
 
-import { useContext } from 'react';
-import { Web3Context } from '../components/web3-provider'; // Ensure correct path
+import { useContext } from 'react'
+import { Web3Context } from '../components/web3-provider'
 
-export const useWeb3 = () => {
-  const context = useContext(Web3Context); // Access the Web3Context
+export function useWeb3() {
+  const context = useContext(Web3Context)
   if (!context) {
-    throw new Error("useWeb3 must be used within a Web3Provider");
+    throw new Error('useWeb3 must be used within a Web3Provider')
   }
-  return context; // Return context (i.e., Web3 state and functions)
-};
+  return context
+} 
