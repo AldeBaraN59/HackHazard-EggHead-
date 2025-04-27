@@ -3,7 +3,7 @@
 import { Inter } from 'next/font/google'
 import { Toaster } from 'sonner'
 import { Web3Provider } from '../components/web3-provider'
-import './global.css'
+import './globals.css'
 import Providers from './Provider';
 
 
@@ -13,13 +13,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" >
       <body className={inter.className}>
-        
-        <Web3Provider>
       
+        <Web3Provider>
+        <Providers>
           {children}
           <Toaster position="top-right" />
-   
+          </Providers>
         </Web3Provider>
+ 
       </body>
     </html>
   )

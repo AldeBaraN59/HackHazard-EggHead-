@@ -20,6 +20,7 @@ import {
     DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { Identity, Avatar, Name, Badge, Address } from "@coinbase/onchainkit/identity";
+import Link from "next/link";
 
 // Menu items.
 const items = [
@@ -120,7 +121,9 @@ export function AppSidebar() {
                                     <span>Account</span>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem>
+                                    <Link href="/billing_dashboard">
                                     <span>Billing</span>
+                                    </Link>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem>
                                     <span>Sign out</span>
