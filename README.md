@@ -1,138 +1,100 @@
-![github-submission-banner](https://github.com/user-attachments/assets/a1493b84-e4e2-456e-a791-ce35ee2bcf2f)
-
-# 🚀 Project Title
-
-> A one-line tagline or mission statement for your project.
+# ![github-submission-banner](https://github.com/user-attachments/assets/a1493b84-e4e2-456e-a791-ce35ee2bcf2f)  
+# 🚀 **Fundtron**  
+> Your one-stop solution to support your favourite creators.
 
 ---
 
 ## 📌 Problem Statement
-
-Select the problem statement number and title from the official list given in Participant Manual.
-
-**Example:**  
-**Problem Statement 7 – Transform the Future of Rural Commerce**
+ 
+**Problem Statement 7:**  
+Create a digital collectibles showcase with OnchainKit-powered social sharing and Smart Wallet-based ownership.
 
 ---
 
 ## 🎯 Objective
 
-What problem does your project solve, and who does it serve?  
-Briefly describe the real-world use case and the value it provides.
+Fundtron empowers creators by providing a platform where fans can directly support them through digital collectibles.  
+Using OnchainKit and smart wallets, we ensure true ownership, easy sharing, and frictionless onboarding — enabling wider adoption of digital assets even by non-crypto-native users.
 
 ---
 
 ## 🧠 Team & Approach
 
-### Team Name:  
-`Your team name here`
+**Team Name:**  
+`Team Egghead`
 
-### Team Members:  
-- Name 1 (GitHub / LinkedIn / Role)  
-- Name 2  
-- Name 3  
-*(Add links if you want)*
+**Team Members:**  
+- Sparsh Verencar ([GitHub](https://github.com/Sparsh-Verencar) / [LinkedIn](https://www.linkedin.com/in/sparsh-verencar)) – *Team Leader & Frontend Developer*  
+- Balaji Kamat ([GitHub](https://github.com/Maha-Purush) – *Backend Developer* 
+- Uddhav Naik ([GitHub](https://github.com/Elfinbolt)) – *Backend Developer*  
+- Shivank Kuncolienkar ([GitHub](https://github.com/AldeBaraN59)) – *Backend Developer*  
 
-### Your Approach:  
-- Why you chose this problem  
-- Key challenges you addressed  
-- Any pivots, brainstorms, or breakthroughs during hacking  
+**Our Approach:**  
+- **Problem Selection:** We chose this challenge because we believe the future of creator monetization lies in blockchain-backed authenticity and community-driven ownership.  
+- **Challenges Addressed:** Seamless Web3 user experience without complex wallet setups; real-time collectible showcasing.  
+- **Breakthroughs:** Integrating OnchainKit's Smart Wallets allowed us to simplify onboarding while still keeping transactions truly on-chain.
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Core Technologies Used:
-- Frontend:
-- Backend:
-- Database:
-- APIs:
-- Hosting:
+**Core Technologies:**
+- **Frontend:** Next.js, Framer Motion, Shadcn-UI, Aceternity-UI
+- **Backend:** Node.js, Base blockchain
+- **Hosting:** Vercel
 
-### Sponsor Technologies Used (if any):
-- [ ] **Groq:** _How you used Groq_  
-- [ ] **Monad:** _Your blockchain implementation_  
-- [ ] **Fluvio:** _Real-time data handling_  
-- [ ] **Base:** _AgentKit / OnchainKit / Smart Wallet usage_  
-- [ ] **Screenpipe:** _Screen-based analytics or workflows_  
-- [ ] **Stellar:** _Payments, identity, or token usage_
-*(Mark with ✅ if completed)*
+**Sponsor Technologies:**
+- [✅] **Base:** OnchainKit integration for social sharing and Smart Wallets
+- [ ] **Groq**
+- [ ] **Monad**
+- [ ] **Fluvio**
+- [ ] **Screenpipe**
+- [ ] **Stellar**
+
 ---
 
 ## ✨ Key Features
 
-Highlight the most important features of your project:
+- ✅ Seamless Smart Wallet-based ownership for collectibles  
+- ✅ OnchainKit-powered social sharing to showcase collectibles  
+- ✅ Minimalistic, fast, and beautiful UI using modern frontend tools  
+- ✅ Easy onboarding for both crypto-native and new users  
 
-- ✅ Feature 1  
-- ✅ Feature 2  
-- ✅ Feature 3  
-- ✅ Feature 4  
-
-Add images, GIFs, or screenshots if helpful!
+*(Screenshots, GIFs, and demo images coming soon!)*
 
 ---
 
 ## 📽️ Demo & Deliverables
 
-- **Demo Video Link:** [Paste YouTube or Loom link here]  
-- **Pitch Deck / PPT Link:** [Paste Google Slides / PDF link here]  
+- **Demo Video:** [Link Coming Soon]  
+- **Pitch Deck / Presentation:** [Link Coming Soon]
 
 ---
 
 ## ✅ Tasks & Bonus Checklist
 
-- [ ] **All members of the team completed the mandatory task - Followed at least 2 of our social channels and filled the form** (Details in Participant Manual)  
-- [ ] **All members of the team completed Bonus Task 1 - Sharing of Badges and filled the form (2 points)**  (Details in Participant Manual)
-- [ ] **All members of the team completed Bonus Task 2 - Signing up for Sprint.dev and filled the form (3 points)**  (Details in Participant Manual)
-
-*(Mark with ✅ if completed)*
+- [✅] **Mandatory Task:** Followed 2+ social channels and filled the form  
+- [ ] **Bonus Task 1:** Shared badges and filled the form (2 points)  
+- [ ] **Bonus Task 2:** Signed up for Sprint.dev and filled the form (3 points)
 
 ---
 
 ## 🧪 How to Run the Project
 
 ### Requirements:
-- Node.js / Python / Docker / etc.
-- API Keys (if any)
-- .env file setup (if needed)
+- Node.js (v16+)
+- OnchainKit API keys (configure in `.env`)
 
-### Local Setup:
+### Setup Instructions:
 ```bash
-# Clone the repo
-git clone https://github.com/your-team/project-name
+# Clone the repository
+git clone https://github.com/AldeBaraN59/HackHazard-EggHead-.git
 
-# Install dependencies
-cd project-name
+# Navigate into project
+HackHazard-EggHead
+
+# Install frontend dependencies
 npm install
 
-# Start development server
+# Start the development server
 npm run dev
-```
-
-Provide any backend/frontend split or environment setup notes here.
-
----
-
-## 🧬 Future Scope
-
-List improvements, extensions, or follow-up features:
-
-- 📈 More integrations  
-- 🛡️ Security enhancements  
-- 🌐 Localization / broader accessibility  
-
----
-
-## 📎 Resources / Credits
-
-- APIs or datasets used  
-- Open source libraries or tools referenced  
-- Acknowledgements  
-
----
-
-## 🏁 Final Words
-
-Share your hackathon journey — challenges, learnings, fun moments, or shout-outs!
-
----
