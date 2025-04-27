@@ -66,7 +66,7 @@ Using OnchainKit and smart wallets, we ensure true ownership, easy sharing, and 
 
 ## 📽️ Demo & Deliverables
 
-- **Demo Video:** [Link Coming Soon]  
+- **Demo Video:** (https://www.youtube.com/watch?v=jCNGKevVgkw) 
 - **Pitch Deck / Presentation:** (https://www.canva.com/design/DAGl1vGMmd0/XvT1MwRZ1Is_7Aq8YlskRw/view?utm_content=DAGl1vGMmd0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h516d400571)
 
 ---
