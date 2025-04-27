@@ -25,7 +25,7 @@ Using OnchainKit and smart wallets, we ensure true ownership, easy sharing, and 
 
 **Team Members:**  
 - Sparsh Verencar ([GitHub](https://github.com/Sparsh-Verencar) / [LinkedIn](https://www.linkedin.com/in/sparsh-verencar)) – *Team Leader & Frontend Developer*  
-- Balaji Kamat ([GitHub](https://github.com/Maha-Purush) – *Frontend Developer* 
+- Balaji Kamat ([GitHub](https://github.com/Maha-Purush)) – *Frontend Developer* 
 - Uddhav Naik ([GitHub](https://github.com/Elfinbolt)) – *Backend Developer*  
 - Shivank Kuncolienkar ([GitHub](https://github.com/AldeBaraN59)) – *Backend Developer*  
 
@@ -67,7 +67,7 @@ Using OnchainKit and smart wallets, we ensure true ownership, easy sharing, and 
 ## 📽️ Demo & Deliverables
 
 - **Demo Video:** [Link Coming Soon]  
-- **Pitch Deck / Presentation:** [Link Coming Soon]
+- **Pitch Deck / Presentation:** (https://www.canva.com/design/DAGl1vGMmd0/XvT1MwRZ1Is_7Aq8YlskRw/view?utm_content=DAGl1vGMmd0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h516d400571)
 
 ---
 
