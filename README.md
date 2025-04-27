@@ -1,122 +1,100 @@
-# Web3 Subscription Platform
+# ![github-submission-banner](https://github.com/user-attachments/assets/a1493b84-e4e2-456e-a791-ce35ee2bcf2f)  
+# 🚀 **Fundtron**  
+> Your one-stop solution to support your favourite creators.
 
-A decentralized subscription platform built on Base blockchain, allowing creators to monetize their content through crypto subscriptions.
+---
 
-## Features
+## 📌 Problem Statement
+ 
+**Problem Statement 7:**  
+Create a digital collectibles showcase with OnchainKit-powered social sharing and Smart Wallet-based ownership.
 
-- Creator registration and profile management
-- Subscription tier creation and management
-- On-chain subscription payments
-- Content access control
-- Creator analytics dashboard
-- User subscription management
-- Multi-wallet support (MetaMask, Coinbase Wallet)
-- IPFS integration for content storage
+---
 
-## Tech Stack
+## 🎯 Objective
 
-- **Frontend**: Next.js 13, TailwindCSS, Coinbase OnchainKit
-- **Smart Contracts**: Solidity, Hardhat
-- **Blockchain**: Base
-- **Storage**: IPFS
-- **Authentication**: Web3 wallets
-- **UI Components**: Shadcn/ui, Framer Motion
+Fundtron empowers creators by providing a platform where fans can directly support them through digital collectibles.  
+Using OnchainKit and smart wallets, we ensure true ownership, easy sharing, and frictionless onboarding — enabling wider adoption of digital assets even by non-crypto-native users.
 
-## Prerequisites
+---
 
-- Node.js 18+
-- npm or yarn
-- MetaMask or Coinbase Wallet
-- Base Sepolia testnet ETH
+## 🧠 Team & Approach
 
-## Installation
+**Team Name:**  
+`Team Egghead`
 
-1. Clone the repository:
+**Team Members:**  
+- Sparsh Verencar ([GitHub](https://github.com/Sparsh-Verencar) / [LinkedIn](https://www.linkedin.com/in/sparsh-verencar)) – *Team Leader & Frontend Developer*  
+- Balaji Kamat ([GitHub](https://github.com/Maha-Purush)) – *Frontend Developer* 
+- Uddhav Naik ([GitHub](https://github.com/Elfinbolt)) – *Backend Developer*  
+- Shivank Kuncolienkar ([GitHub](https://github.com/AldeBaraN59)) – *Backend Developer*  
+
+**Our Approach:**  
+- **Problem Selection:** We chose this challenge because we believe the future of creator monetization lies in blockchain-backed authenticity and community-driven ownership.  
+- **Challenges Addressed:** Seamless Web3 user experience without complex wallet setups; real-time collectible showcasing.  
+- **Breakthroughs:** Integrating OnchainKit's Smart Wallets allowed us to simplify onboarding while still keeping transactions truly on-chain.
+
+---
+
+## 🛠️ Tech Stack
+
+**Core Technologies:**
+- **Frontend:** Next.js, Framer Motion, Shadcn-UI, Aceternity-UI
+- **Backend:** Node.js, Base blockchain
+- **Hosting:** Vercel
+
+**Sponsor Technologies:**
+- [✅] **Base:** OnchainKit integration for social sharing and Smart Wallets
+- [ ] **Groq**
+- [ ] **Monad**
+- [ ] **Fluvio**
+- [ ] **Screenpipe**
+- [ ] **Stellar**
+
+---
+
+## ✨ Key Features
+
+- ✅ Seamless Smart Wallet-based ownership for collectibles  
+- ✅ OnchainKit-powered social sharing to showcase collectibles  
+- ✅ Minimalistic, fast, and beautiful UI using modern frontend tools  
+- ✅ Easy onboarding for both crypto-native and new users  
+
+*(Screenshots, GIFs, and demo images coming soon!)*
+
+---
+
+## 📽️ Demo & Deliverables
+
+- **Demo Video:** [Link Coming Soon]  
+- **Pitch Deck / Presentation:** (https://www.canva.com/design/DAGl1vGMmd0/XvT1MwRZ1Is_7Aq8YlskRw/view?utm_content=DAGl1vGMmd0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h516d400571)
+
+---
+
+## ✅ Tasks & Bonus Checklist
+
+- [✅] **Mandatory Task:** Followed 2+ social channels and filled the form  
+- [ ] **Bonus Task 1:** Shared badges and filled the form (2 points)  
+- [ ] **Bonus Task 2:** Signed up for Sprint.dev and filled the form (3 points)
+
+---
+
+## 🧪 How to Run the Project
+
+### Requirements:
+- Node.js (v16+)
+- OnchainKit API keys (configure in `.env`)
+
+### Setup Instructions:
 ```bash
-git clone https://github.com/yourusername/web3-subscription-platform.git
-cd web3-subscription-platform
-```
+# Clone the repository
+git clone https://github.com/AldeBaraN59/HackHazard-EggHead-.git
 
-2. Install dependencies:
-```bash
+# Navigate into project
+HackHazard-EggHead
+
+# Install frontend dependencies
 npm install
-```
 
-3. Set up environment variables:
-```bash
-cp .env.example .env.local
-```
-Fill in the required environment variables in `.env.local`
-
-4. Start the development server:
-```bash
+# Start the development server
 npm run dev
-```
-
-## Smart Contract Deployment
-
-1. Compile contracts:
-```bash
-npx hardhat compile
-```
-
-2. Deploy to Base Sepolia:
-```bash
-npx hardhat run scripts/deploy.js --network baseSepolia
-```
-
-## Project Structure
-
-```
-├── contracts/           # Smart contracts
-├── scripts/            # Deployment scripts
-├── src/
-│   ├── app/           # Next.js app router
-│   ├── components/    # React components
-│   ├── hooks/         # Custom hooks
-│   ├── lib/           # Utility functions
-│   ├── styles/        # Global styles
-│   └── utils/         # Helper functions
-├── public/            # Static assets
-└── tests/            # Test files
-```
-
-## Smart Contracts
-
-- `CreatorRegistry.sol`: Manages creator profiles and verification
-- `SubscriptionManager.sol`: Handles subscription logic and payments
-- `ContentNFT.sol`: Manages content access and subscription tiers
-
-## Frontend Features
-
-- Modern, responsive design
-- Dark/light mode support
-- Wallet connection with multiple providers
-- Creator dashboard
-- User subscription management
-- Content viewing interface
-- Analytics and insights
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support
-
-For support, email support@example.com or join our Discord community.
-
-## Acknowledgments
-
-- Base Network
-- Coinbase OnchainKit
-- IPFS
-- Hardhat
-- Next.js
