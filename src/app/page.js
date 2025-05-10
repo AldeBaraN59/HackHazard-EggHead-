@@ -1,92 +1,143 @@
-
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Avatar, Identity, Name, Badge, Address } from '@coinbase/onchainkit/identity';
-
-// Define a function to fetch identity info or pass in static data
-const address = "0x838aD0EAE54F99F1926dA7C3b6bFbF617389B4D9";
-const schemaId = "0xf8b05c79f090979bf4a80270aba232dff11a10d9ca55c4f88de95317970f0de9";
+import HomeNavbar from './HomeNavbar';
+import Card from '../components/card.jsx';
+import { motion } from 'framer-motion';
+import { AnimatedTestimonials } from '@/components/ui/animated-testimonials';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate some delay for loading
     setLoading(false);
   }, []);
 
+  const testimonials = [
+    {
+      name: "Alice Johnson",
+      designation: "Content Creator",
+      quote: "Fundtron has completely changed how I connect with my audience. The support I receive helps me keep creating full-time.",
+      src: "/WomanA.jpg"
+    },
+    {
+      name: "Michael Chen",
+      designation: "Tech Reviewer",
+      quote: "I love how easy it is for my community to support me through this platform. The UI is sleek and efficient.",
+      src: "/GuyA.jpg"
+    },
+    {
+      name: "Sofia Martinez",
+      designation: "Fitness Coach",
+      quote: "This platform has streamlined my subscriber interactions. Highly recommended for creators looking to grow sustainably.",
+      src: "/GuyB.jpg"
+    }
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        {loading ? (
-          <div>Loading Identity...</div>
-        ) : (
-          <Identity address={address} schemaId={schemaId}>
-            <Avatar />
-            <Name>
-              <Badge />
-            </Name>
-            <Address />
-          </Identity>
-        )}
-        {/* If you still want the other default content, you can uncomment it */}
-        {/* <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        /> */}
-      </main>
-      {/* Footer can be kept the same if needed */}
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="bg-slate-900 text-white w-screen flex flex-col justify-center items-center">
+      {/* Navbar */}
+      <header className="sticky top-0 z-50">
+        <HomeNavbar />
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative flex flex-col lg:flex-row items-center justify-between h-screen px-8 lg:px-20 overflow-hidden gap-10">
+        {/* Hero Text */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="z-10 text-center lg:text-left max-w-2xl space-y-6"
+        >
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+            Welcome to <span className="text-teal-400">FundTron</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300">
+            Your one-stop platform to support your favorite creators.
+          </p>
+        </motion.div>
+
+        {/* Headphone Image in row */}
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="hidden lg:block"
         >
           <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="/headphones-removebg-preview.png"
+            alt="Headphones"
+            width={300}
+            height={300}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        </motion.div>
+      </section>
+
+      <section className="py-20 px-6 lg:px-20 bg-slate-800 text-center">
+        <h2 className="text-3xl font-bold mb-10">How It Works</h2>
+        <div className="grid md:grid-cols-3 gap-10 text-left">
+          {[
+            { title: "Create an Account", desc: "Sign up and set up your creator profile in minutes." },
+            { title: "Share Your Work", desc: "Post content, grow your followers, and keep them engaged." },
+            { title: "Get Support", desc: "Receive subscriptions, donations, and more from your fans." },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              whileInView={{ y: [20, 0], opacity: [0, 1] }}
+              transition={{ duration: 0.5, delay: 0.2 * i }}
+              viewport={{ once: true }}
+              className="bg-slate-700 p-6 rounded-xl"
+            >
+              <h3 className="text-xl font-semibold text-teal-400 mb-3">{item.title}</h3>
+              <p className="text-gray-300">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+      <section className="bg-slate-900 py-16 px-6 lg:px-20 text-center">
+        <h2 className="text-3xl font-bold mb-12">Join Our Growing Community</h2>
+        <div className="flex flex-wrap justify-center gap-10">
+          {[
+            { label: "Creators", value: "2.4K+" },
+            { label: "Monthly Visitors", value: "75K+" },
+            { label: "Transactions", value: "$500K+" },
+          ].map((stat, i) => (
+            <motion.div
+              key={i}
+              whileInView={{ opacity: [0, 1], scale: [0.9, 1] }}
+              transition={{ duration: 0.5 }}
+              className="text-white text-center"
+            >
+              <p className="text-4xl font-bold text-teal-400">{stat.value}</p>
+              <p className="text-gray-300">{stat.label}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+     
+      <section>
+        <AnimatedTestimonials testimonials={testimonials} />
+      </section>
+
+      <section className="bg-teal-800 text-white py-12 px-6 lg:px-20 text-center">
+        <h2 className="text-3xl font-bold mb-4">Ready to start your creator journey?</h2>
+        <p className="text-lg mb-6">Sign up now and turn your passion into income.</p>
+        <button className="px-8 py-3 bg-white text-teal-600 font-semibold rounded-full hover:bg-gray-200 transition">
+          Join Now
+        </button>
+      </section>
+
+      {/* Footer / Spline Viewer Section */}
+      <footer className="relative w-full h-screen bg-slate-800">
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+        <spline-viewer
+          url="https://prod.spline.design/A1VkaKD7TMyunAGY/scene.splinecode"
+          className="absolute inset-0 w-full h-full"
+        ></spline-viewer>
+        <div className="absolute bottom-0 w-full text-center pb-4 text-gray-400 text-sm">
+          © {new Date().getFullYear()} FundTron. All rights reserved.
+        </div>
       </footer>
     </div>
   );
